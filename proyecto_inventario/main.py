@@ -1,32 +1,30 @@
 import asyncio
-#importar funciones de otro archivo
-from database import crear_producto, obtener_producto, actualizar_stock,eliminar_producto
 
-async def prueba_de_estres():
-    print("...iniciando prueba....")
-    tareas_creacion = [
-        crear_producto("M001", "llantas trasera", 10),
-        crear_producto("M001", "filtros de aire", 25),
-        crear_producto("M001", "bujia", 50),
-    ]
+from database import reiniciar_inventario, tareas_alerta, vender_producto
 
+
+async def procesar_venta(codigo, cantidad):
     try:
-        await asyncio.gather(*tareas_creacion)
-        print("productos creados exitosamente")
-    except Exception as e:
-        print(f"error de creacion: {e}")
+        resultado = await vender_producto(codigo, cantidad)
+        print(resultado)
+    except KeyError as error:
+        print(f"Error en venta de {codigo}: {error.args[0]}")
+    except ValueError as error:
+        print(f"Error en venta de {codigo}: {error}")
 
-    print("\nactualizar y consultar..")
-    try:
-        resultado = await asyncio.gather(
-            actualizar_stock(8,"M002"),
-            obtener_producto("M002")
-        )
-        print("operaciones mixtas completadas")
-        print(f"-update devolvio {resultado[0]}")
-        print(f"-get devolvio:{resultado[1]}")
-    except Exception as e:
-        print("error en operaciones mixtas")
 
-asyncio.run(prueba_de_estres())
+async def main():
+    reiniciar_inventario()
 
+    await asyncio.gather(
+        procesar_venta("P001", 2),
+        procesar_venta("P002", 3),
+        procesar_venta("P003", 10),
+        procesar_venta("P999", 1),
+    )
+
+    print("Ventas procesadas. Esperando alertas en segundo plano...")
+    await asyncio.gather(*tareas_alerta)
+
+
+asyncio.run(main())
