@@ -1,0 +1,14 @@
+{
+    "P001": {
+        "nombre": "Laptop",
+        "stock": 8
+    },
+    "P002": {
+        "nombre": "Mouse",
+        "stock": 2
+    },
+    "P003": {
+        "nombre": "Teclado",
+        "stock": 4
+    }
+}
