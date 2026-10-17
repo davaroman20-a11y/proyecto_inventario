@@ -9,6 +9,9 @@ INVENTARIO_INICIAL = {
     "P003": {"nombre": "Teclado", "stock": 4},
 }
 
+
+print("hola")
+
 tareas_alerta = []
 
 
