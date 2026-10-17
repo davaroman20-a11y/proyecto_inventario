@@ -31,7 +31,7 @@ def reiniciar_inventario():
 
 async def alerta_stock_bajo(codigo, nombre, stock_actual):
     await asyncio.sleep(2)
-    print(f"⚠️ ALERTA CRÍTICA: El producto {nombre} ({codigo}) ha bajado a {stock_actual} unidades. Solicitar restock inmediato.")
+    print(f" ALERTA CRÍTICA: El producto {nombre} ({codigo}) ha bajado a {stock_actual} unidades. Solicitar restock inmediato.")
 
 
 async def vender_producto(codigo, cantidad_vendida):
