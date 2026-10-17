@@ -10,7 +10,7 @@ INVENTARIO_INICIAL = {
 }
 
 
-print("hola")
+
 
 tareas_alerta = []
 

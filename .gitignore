@@ -1,0 +1,12 @@
+clase_uno/
+clase_dos/
+clase_tres/
+clase_cuatro/
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+.vscode/
+.idea/
+.DS_Store
