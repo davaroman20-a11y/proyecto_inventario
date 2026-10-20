@@ -1,0 +1,12 @@
+[
+    {
+        "codigo": "PEP01",
+        "nombre": "llanta rin17",
+        "stock": 10
+    },
+    {
+        "codigo": "PEP02",
+        "nombre": "Aceite motul 7100",
+        "stock": 5
+    }
+]
