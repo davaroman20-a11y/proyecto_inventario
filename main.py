@@ -2,20 +2,20 @@
 from fastapi import FastAPI, HTTPException
 from database import leer_base_datos, obtener_producto
 
-# Inicializar la aplicacion
+
 apiRest = FastAPI(
     title="API de Inventarios SENA",
     description="mi primer api",
     version="1.0.0",
 )
 
-# Endpoint principal
+
 @apiRest.get("/")
 async def ruta_principal():
     return {"mensaje": "Bienvenido a mi primera API Rest!"}
 
 
-# Endpoint estado del servidor
+
 @apiRest.get("/estado")
 async def estado_servidor():
     return {
@@ -24,7 +24,7 @@ async def estado_servidor():
     }
 
 
-# Endpoint suma
+
 @apiRest.get("/suma")
 async def sumar_numeros():
     numero1 = 10
@@ -39,7 +39,7 @@ async def sumar_numeros():
     }
 
 
-# Listar todos los productos
+
 @apiRest.get("/productos")
 async def lista_productos():
     datos = await leer_base_datos()
@@ -50,7 +50,7 @@ async def lista_productos():
     }
 
 
-# Buscar un producto por codigo
+
 @apiRest.get("/productos/{codigo_producto}")
 async def buscar_un_producto(codigo_producto: str):
     try:
@@ -64,7 +64,7 @@ async def buscar_un_producto(codigo_producto: str):
         )
 
 
-# 1. Mostrar las categorias sin repetir
+
 @apiRest.get("/categorias")
 async def listar_categorias():
     datos = await leer_base_datos()
@@ -78,7 +78,7 @@ async def listar_categorias():
     return list(categorias)
 
 
-# 2. Mostrar productos con stock critico
+
 @apiRest.get("/alertas/stock")
 async def stock_critico():
     datos = await leer_base_datos()
@@ -92,7 +92,7 @@ async def stock_critico():
     return productos_criticos
 
 
-# 3. Buscar productos por nombre
+
 @apiRest.get("/productos/buscar/{palabra_clave}")
 async def buscar_producto_por_nombre(palabra_clave: str):
     datos = await leer_base_datos()
